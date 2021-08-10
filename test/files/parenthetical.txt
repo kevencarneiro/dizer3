@@ -1,0 +1,1 @@
+Foram realizados testes no ambiente de UAT (User Acceptance Test) para validar os recursos desenvolvidos.

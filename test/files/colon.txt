@@ -1,0 +1,1 @@
+Realização de testes de Regressão por fase antes da publicação em Produção: Antes de cada instalação em produção, foram realizadas mais uma bateria de testes de regressão para garantir que não houveram impactos negativos nas funcionalidades já existentes após eventuais ajustes

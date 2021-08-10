@@ -2,9 +2,10 @@ import re
 import nltk
 import logging
 from ufal.udpipe import Model, Pipeline, ProcessingError
+from dizer3 import utils
+import os
 
-
-model = Model.load('models/portuguese-bosque-ud-2.5-191206.udpipe')
+model = Model.load(os.path.join(utils.current_path, 'models/portuguese-bosque-ud-2.5-191206.udpipe'))
 pipeline = Pipeline(model, 'tokenize', Pipeline.DEFAULT,
                     Pipeline.DEFAULT, 'conllu')
 error = ProcessingError()
