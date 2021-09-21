@@ -6,6 +6,9 @@ parenthetical_markers = {'(': ')', '[': ']', '{': '}'}
 
 current_path = os.path.dirname(os.path.realpath(__file__))
 
+segments_file_extension = '.segments'
+relations_file_extension = '.relations'
+
 attribution_verbs = set()
 with open(os.path.join(current_path, 'resources/attribVerbs.txt'), 'r') as file:
     attrib_verbs = file.readlines()
@@ -16,6 +19,11 @@ with open(os.path.join(current_path, 'resources/discourseMarkers.txt'), 'r') as 
     markers = file.readlines()
     discourse_markers = {p.split(',')[0]: p.split(',')[
         1].strip() for p in markers}
+
+
+def read_file(file_path: str):
+    with open(file_path, 'r', encoding="utf8") as file:
+        return file.readlines()
 
 
 def print_segments(segmented_text, file_path):
