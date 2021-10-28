@@ -40,6 +40,10 @@ def evaluate(data_path: str, evaluation_path: str):
             predicted_segment = predicted_token['segment']
             actual_segment = actual_token['segment']
 
+            if not tokens_are_equal:
+                logging.warning(f"Different tokens found in index {idx} of file {file_path}. "
+                                f"Current token: {predicted_token['token']}\tReference token: {actual_token['token']}")
+
             if tokens_are_equal and predicted_segment == actual_segment:
                 if actual_segment == True:
                     true_positives += 1

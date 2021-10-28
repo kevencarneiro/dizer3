@@ -6,6 +6,7 @@ parenthetical_markers = {'(': ')', '[': ']', '{': '}'}
 
 current_path = os.path.dirname(os.path.realpath(__file__))
 
+morpho_file_extension = '.morpho'
 segments_file_extension = '.segments'
 relations_file_extension = '.relations'
 
@@ -26,8 +27,18 @@ def read_file(file_path: str):
         return file.readlines()
 
 
+def print_morpho(segmented_text, file_path):
+    with open("{}{}".format(file_path, morpho_file_extension), 'w', encoding="utf8") as output:
+        for p, sentences in enumerate(segmented_text):
+            for s, sentence in enumerate(sentences):
+                for i, segment in enumerate(sentence):
+                    for t, token in enumerate(segment):
+                        output.write("{}:{}:{}:{}: {}".format(p+1, s+1, i+1, t+1, token))
+                        output.write("\n")
+
+
 def print_segments(segmented_text, file_path):
-    with open("{}.segments".format(file_path), 'w', encoding="utf8") as output:
+    with open("{}{}".format(file_path, segments_file_extension), 'w', encoding="utf8") as output:
         for p, sentences in enumerate(segmented_text):
             for s, sentence in enumerate(sentences):
                 for i, segment in enumerate(sentence):
@@ -38,7 +49,7 @@ def print_segments(segmented_text, file_path):
 
 
 def print_relations(segmented_text, file_path, relations):
-    with open("{}.relations".format(file_path), 'w', encoding="utf8") as output:
+    with open("{}{}".format(file_path, relations_file_extension), 'w', encoding="utf8") as output:
         p = 0
         while p < len(segmented_text):
             sentences = segmented_text[p]
